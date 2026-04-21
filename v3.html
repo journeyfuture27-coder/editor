@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="AI Telegram-бот, который считает калории и БЖУ по фото еды за секунды.">
+
+  <meta property="og:title" content="HealthyBot — AI Nutrition Tracker">
+  <meta property="og:description" content="Считай калории по фото прямо в Telegram">
+  <meta property="og:type" content="website">
+
   <title>HealthyBot — AI Nutrition Tracker</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -51,7 +57,7 @@
 
     .btn {
       background: linear-gradient(135deg, #00d2ff, #6c5ce7);
-      padding: 10px 16px;
+      padding: 12px 16px;
       border-radius: 10px;
       border: none;
       color: white;
@@ -59,9 +65,16 @@
       font-weight: 600;
       text-decoration: none;
       display: inline-block;
+      transition: all 0.2s ease;
+      box-shadow: 0 8px 20px rgba(108, 92, 231, 0.25);
+      text-align: center;
     }
 
-    /* HERO */
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(108, 92, 231, 0.35);
+    }
+
     .hero {
       padding: 170px 20px 80px;
       text-align: center;
@@ -101,7 +114,6 @@
       margin-bottom: 40px;
     }
 
-    /* GRID */
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -113,9 +125,14 @@
       padding: 20px;
       border-radius: 14px;
       color: #ddd;
+      transition: 0.2s ease;
     }
 
-    /* HOW IT WORKS */
+    .card:hover {
+      transform: translateY(-4px);
+      background: #182043;
+    }
+
     .how-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -128,7 +145,6 @@
       padding: 16px;
       border-radius: 18px;
       text-align: center;
-
       opacity: 0;
       transform: translateY(20px);
       animation: fadeUp 0.7s ease forwards;
@@ -151,7 +167,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* PHONE */
     .phone-mock {
       width: 100%;
       aspect-ratio: 9 / 19.5;
@@ -212,12 +227,6 @@
       color: #ccc;
     }
 
-    .phone-card p {
-      font-size: 14px;
-      color: #ccc;
-      line-height: 1.4;
-    }
-
     .final {
       text-align: center;
       padding: 100px 20px;
@@ -237,11 +246,36 @@
       }
 
       header {
-        padding: 18px 20px;
+        padding: 14px 16px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hero {
+        padding: 120px 16px 60px;
       }
 
       .hero h1 {
-        font-size: 36px;
+        font-size: 30px;
+        line-height: 1.15;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .section {
+        padding: 60px 16px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+
+      .btn {
+        width: 100%;
       }
     }
 
@@ -256,10 +290,9 @@
     <a href="#audience">Кому полезен</a>
     <a href="#how">Как работает</a>
   </nav>
-  <a class="btn" href="https://t.me/Fit_Healthybot" target="_blank">Попробовать</a>
+  <a class="btn" href="https://t.me/Fit_Healthybot">Начать анализ еды →</a>
 </header>
 
-<!-- HERO -->
 <section class="hero">
   <h1>AI считает калории по фото прямо в Telegram</h1>
   <p>
@@ -267,12 +300,22 @@
   </p>
   <div class="badge">📱 Без приложений • Telegram • Анализ за секунды</div>
 
-  <a class="btn" style="margin-top:25px;" href="https://t.me/Fit_Healthybot" target="_blank">
-    Попробовать бесплатно
+  <a class="btn" style="margin-top:25px;" href="https://t.me/Fit_Healthybot">
+    Попробовать бесплатно в Telegram →
   </a>
 </section>
 
-<!-- AUDIENCE -->
+<!-- 🔥 NEW: PAIN BLOCK -->
+<section class="section">
+  <h2>Знакомые проблемы?</h2>
+
+  <div class="grid">
+    <div class="card">😩 Устали каждый день вручную заносить еду в дневник?</div>
+    <div class="card">🎯 Хотите реально профессиональные советы по похудению?</div>
+    <div class="card">📱 Не хотите устанавливать очередное приложение?</div>
+  </div>
+</section>
+
 <section class="section" id="audience">
   <h2>Кому полезен</h2>
 
@@ -283,42 +326,35 @@
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
 <section class="section" id="how">
   <h2>Как это работает</h2>
 
   <div class="how-grid">
 
-    <!-- 1 -->
     <div class="phone-card">
       <div class="phone-mock">
         <div class="mock-ui">
           <div class="mock-header">HealthyBot</div>
           <div class="msg user">📸 Caesar Salad</div>
-          <div class="msg bot">🔍 Анализирую изображение...</div>
-          <img src="https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&w=600&q=80" style="width:100%; border-radius:10px;">
-          <div class="msg bot">🍽 Обнаружено: салат цезарь</div>
+          <div class="msg bot">🔍 Анализирую...</div>
+          <img src="https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&w=600&q=80" style="width:100%; border-radius:10px;" loading="lazy">
+          <div class="msg bot">🍽 Обнаружено: салат</div>
         </div>
       </div>
-      <p>1. Фото еды или голосовое сообщение</p>
+      <p>1. Фото еды</p>
     </div>
 
-    <!-- 2 -->
     <div class="phone-card">
       <div class="phone-mock">
         <div class="mock-ui">
           <div class="mock-header">HealthyBot</div>
-          <div class="msg bot">📊 Caesar Salad</div>
-          <div class="msg bot">🍗 Курица — 120 г</div>
-          <div class="msg bot">🥬 Салат — 80 г</div>
-          <div class="msg bot">🧀 Пармезан — 15 г</div>
-          <div class="msg bot">🔥 540 ккал • БЖУ рассчитаны</div>
+          <div class="msg bot">🔥 540 ккал</div>
+          <div class="msg bot">🍗 Белки / Жиры / Углеводы</div>
         </div>
       </div>
-      <p>2. Детальный разбор БЖУ</p>
+      <p>2. Анализ БЖУ</p>
     </div>
 
-    <!-- 3 -->
     <div class="phone-card">
       <div class="phone-mock">
         <div class="mock-ui">
@@ -329,7 +365,6 @@
       <p>3. Контроль воды</p>
     </div>
 
-    <!-- 4 -->
     <div class="phone-card">
       <div class="phone-mock">
         <div class="mock-ui">
@@ -337,21 +372,19 @@
           <div class="msg bot">🎯 Ты близко к цели</div>
         </div>
       </div>
-      <p>4. Достижение целей</p>
+      <p>4. Прогресс</p>
     </div>
 
-    <!-- 5 -->
     <div class="phone-card">
       <div class="phone-mock">
         <div class="mock-ui">
           <div class="mock-header">HealthyBot</div>
-          <div class="msg bot">📊 Неделя: -0.8 кг</div>
+          <div class="msg bot">📊 -0.8 кг / неделя</div>
         </div>
       </div>
-      <p>5. Прогресс и отчёты</p>
+      <p>5. Отчёты</p>
     </div>
 
-    <!-- 6 -->
     <div class="phone-card">
       <div class="phone-mock">
         <div class="mock-ui">
@@ -359,21 +392,20 @@
           <div class="msg bot">🧠 Совет: добавь белок</div>
         </div>
       </div>
-      <p>6. ИИ-нутрициолог</p>
+      <p>6. AI рекомендации</p>
     </div>
 
   </div>
 </section>
 
-<!-- CTA -->
 <section class="final">
   <h2>Начните контролировать питание уже сегодня</h2>
   <p style="color:#aaa;margin-top:10px;">
     Всё в одном Telegram-боте
   </p>
 
-  <a class="btn" style="margin-top:20px;" href="https://t.me/Fit_Healthybot" target="_blank">
-    Перейти в Telegram
+  <a class="btn" style="margin-top:20px;" href="https://t.me/Fit_Healthybot">
+    Получить анализ первой еды бесплатно →
   </a>
 </section>
 

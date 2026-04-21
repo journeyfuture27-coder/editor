@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HealthyBot — AI Nutrition Tracker</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Inter, sans-serif;
+    }
+
+    body {
+      background: #0b0f1a;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 18px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(11,15,26,0.75);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .logo {
+      font-weight: 800;
+    }
+
+    nav a {
+      margin: 0 14px;
+      text-decoration: none;
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, #00d2ff, #6c5ce7);
+      padding: 10px 16px;
+      border-radius: 10px;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 170px 20px 80px;
+      text-align: center;
+      background: radial-gradient(circle at top, #1b1f3a, #0b0f1a);
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1.05;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .hero p {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #bbb;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .badge {
+      margin-top: 14px;
+      color: #888;
+      font-size: 13px;
+    }
+
+    .section {
+      padding: 90px 60px;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 34px;
+      margin-bottom: 40px;
+    }
+
+    /* GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: #141a2e;
+      padding: 20px;
+      border-radius: 14px;
+      color: #ddd;
+    }
+
+    /* HOW IT WORKS */
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .phone-card {
+      background: #12182b;
+      padding: 16px;
+      border-radius: 18px;
+      text-align: center;
+
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.7s ease forwards;
+      transition: 0.25s ease;
+    }
+
+    .phone-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .phone-card:nth-child(1) { animation-delay: 0.1s; }
+    .phone-card:nth-child(2) { animation-delay: 0.2s; }
+    .phone-card:nth-child(3) { animation-delay: 0.3s; }
+    .phone-card:nth-child(4) { animation-delay: 0.4s; }
+    .phone-card:nth-child(5) { animation-delay: 0.5s; }
+    .phone-card:nth-child(6) { animation-delay: 0.6s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* PHONE */
+    .phone-mock {
+      width: 100%;
+      aspect-ratio: 9 / 19.5;
+      border-radius: 28px;
+      background: #0e1324;
+      margin-bottom: 14px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+    }
+
+    .phone-mock::before {
+      content: "";
+      position: absolute;
+      width: 40%;
+      height: 10px;
+      background: rgba(255,255,255,0.15);
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 20px;
+    }
+
+    .mock-ui {
+      position: absolute;
+      top: 40px;
+      left: 10px;
+      right: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mock-header {
+      font-size: 12px;
+      text-align: center;
+      color: #888;
+      margin-bottom: 6px;
+    }
+
+    .msg {
+      font-size: 11px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      max-width: 90%;
+      line-height: 1.3;
+    }
+
+    .user {
+      align-self: flex-end;
+      background: linear-gradient(135deg, #00d2ff, #6c5ce7);
+      color: white;
+    }
+
+    .bot {
+      align-self: flex-start;
+      background: #1a2138;
+      color: #ccc;
+    }
+
+    .phone-card p {
+      font-size: 14px;
+      color: #ccc;
+      line-height: 1.4;
+    }
+
+    .final {
+      text-align: center;
+      padding: 100px 20px;
+      background: #0f1426;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 12px;
+      color: #666;
+    }
+
+    @media (max-width: 900px) {
+      .grid, .how-grid {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        padding: 18px 20px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">HealthyBot</div>
+  <nav>
+    <a href="#audience">Кому полезен</a>
+    <a href="#how">Как работает</a>
+  </nav>
+  <a class="btn" href="https://t.me/Fit_Healthybot" target="_blank">Попробовать</a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>AI считает калории по фото прямо в Telegram</h1>
+  <p>
+    HealthyBot анализирует еду, считает калории и БЖУ и даёт рекомендации от ИИ-нутрициолога.
+  </p>
+  <div class="badge">📱 Без приложений • Telegram • Анализ за секунды</div>
+
+  <a class="btn" style="margin-top:25px;" href="https://t.me/Fit_Healthybot" target="_blank">
+    Попробовать бесплатно
+  </a>
+</section>
+
+<!-- AUDIENCE -->
+<section class="section" id="audience">
+  <h2>Кому полезен</h2>
+
+  <div class="grid">
+    <div class="card">⚖️ Похудение — контроль дефицита</div>
+    <div class="card">💪 Набор массы — контроль белка</div>
+    <div class="card">🧘 Здоровье — баланс питания</div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how">
+  <h2>Как это работает</h2>
+
+  <div class="how-grid">
+
+    <!-- 1 -->
+    <div class="phone-card">
+      <div class="phone-mock">
+        <div class="mock-ui">
+          <div class="mock-header">HealthyBot</div>
+          <div class="msg user">📸 Caesar Salad</div>
+          <div class="msg bot">🔍 Анализирую изображение...</div>
+          <img src="https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&w=600&q=80" style="width:100%; border-radius:10px;">
+          <div class="msg bot">🍽 Обнаружено: салат цезарь</div>
+        </div>
+      </div>
+      <p>1. Фото еды или голосовое сообщение</p>
+    </div>
+
+    <!-- 2 -->
+    <div class="phone-card">
+      <div class="phone-mock">
+        <div class="mock-ui">
+          <div class="mock-header">HealthyBot</div>
+          <div class="msg bot">📊 Caesar Salad</div>
+          <div class="msg bot">🍗 Курица — 120 г</div>
+          <div class="msg bot">🥬 Салат — 80 г</div>
+          <div class="msg bot">🧀 Пармезан — 15 г</div>
+          <div class="msg bot">🔥 540 ккал • БЖУ рассчитаны</div>
+        </div>
+      </div>
+      <p>2. Детальный разбор БЖУ</p>
+    </div>
+
+    <!-- 3 -->
+    <div class="phone-card">
+      <div class="phone-mock">
+        <div class="mock-ui">
+          <div class="mock-header">HealthyBot</div>
+          <div class="msg bot">💧 1200 / 2000 мл</div>
+        </div>
+      </div>
+      <p>3. Контроль воды</p>
+    </div>
+
+    <!-- 4 -->
+    <div class="phone-card">
+      <div class="phone-mock">
+        <div class="mock-ui">
+          <div class="mock-header">HealthyBot</div>
+          <div class="msg bot">🎯 Ты близко к цели</div>
+        </div>
+      </div>
+      <p>4. Достижение целей</p>
+    </div>
+
+    <!-- 5 -->
+    <div class="phone-card">
+      <div class="phone-mock">
+        <div class="mock-ui">
+          <div class="mock-header">HealthyBot</div>
+          <div class="msg bot">📊 Неделя: -0.8 кг</div>
+        </div>
+      </div>
+      <p>5. Прогресс и отчёты</p>
+    </div>
+
+    <!-- 6 -->
+    <div class="phone-card">
+      <div class="phone-mock">
+        <div class="mock-ui">
+          <div class="mock-header">HealthyBot</div>
+          <div class="msg bot">🧠 Совет: добавь белок</div>
+        </div>
+      </div>
+      <p>6. ИИ-нутрициолог</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="final">
+  <h2>Начните контролировать питание уже сегодня</h2>
+  <p style="color:#aaa;margin-top:10px;">
+    Всё в одном Telegram-боте
+  </p>
+
+  <a class="btn" style="margin-top:20px;" href="https://t.me/Fit_Healthybot" target="_blank">
+    Перейти в Telegram
+  </a>
+</section>
+
+<footer>
+  © 2026 HealthyBot
+</footer>
+
+</body>
+</html>

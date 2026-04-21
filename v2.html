@@ -21,6 +21,11 @@
       overflow-x: hidden;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* HEADER */
     header {
       position: fixed;
       top: 0;
@@ -87,6 +92,7 @@
       font-size: 13px;
     }
 
+    /* SECTION */
     .section {
       padding: 90px 60px;
     }
@@ -124,30 +130,95 @@
       padding: 16px;
       border-radius: 18px;
       text-align: center;
+
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.7s ease forwards;
+      transition: 0.25s ease;
     }
 
-    /* ПОРТРЕТНЫЙ МОКАП ТЕЛЕФОНА */
+    .phone-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .phone-card:nth-child(1) { animation-delay: 0.1s; }
+    .phone-card:nth-child(2) { animation-delay: 0.2s; }
+    .phone-card:nth-child(3) { animation-delay: 0.3s; }
+    .phone-card:nth-child(4) { animation-delay: 0.4s; }
+    .phone-card:nth-child(5) { animation-delay: 0.5s; }
+    .phone-card:nth-child(6) { animation-delay: 0.6s; }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* PHONE MOCKUP */
     .phone-mock {
       width: 100%;
       aspect-ratio: 9 / 19.5;
-      border-radius: 26px;
-      background: linear-gradient(135deg, #00d2ff, #6c5ce7);
+      border-radius: 28px;
+      background: #0e1324;
       margin-bottom: 14px;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.45);
     }
 
-    /* верхняя “динамическая” полоска как у телефона */
     .phone-mock::before {
       content: "";
       position: absolute;
       width: 40%;
       height: 10px;
-      background: rgba(255,255,255,0.25);
-      top: 14px;
+      background: rgba(255,255,255,0.15);
+      top: 12px;
       left: 50%;
       transform: translateX(-50%);
       border-radius: 20px;
+    }
+
+    /* TELEGRAM UI INSIDE PHONE */
+    .mock-ui {
+      position: absolute;
+      top: 40px;
+      left: 10px;
+      right: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mock-header {
+      font-size: 12px;
+      text-align: center;
+      color: #888;
+      margin-bottom: 6px;
+    }
+
+    .msg {
+      font-size: 11px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      max-width: 85%;
+      line-height: 1.3;
+    }
+
+    .user {
+      align-self: flex-end;
+      background: linear-gradient(135deg, #00d2ff, #6c5ce7);
+      color: white;
+    }
+
+    .bot {
+      align-self: flex-start;
+      background: #1a2138;
+      color: #ccc;
     }
 
     .phone-card p {
@@ -212,25 +283,14 @@
   </a>
 </section>
 
-<!-- AUDIENCE (ВОЗВРАЩЕНО) -->
+<!-- AUDIENCE -->
 <section class="section" id="audience">
   <h2>Кому полезен HealthyBot</h2>
 
   <div class="grid">
-    <div class="card">
-      ⚖️ <b>Похудение</b><br><br>
-      Автоматический контроль калорий и дефицита без ручных расчётов.
-    </div>
-
-    <div class="card">
-      💪 <b>Набор мышечной массы</b><br><br>
-      Контроль белка и калорий для чистого набора без лишнего жира.
-    </div>
-
-    <div class="card">
-      🧘 <b>Здоровый образ жизни</b><br><br>
-      Баланс питания, воды и активности с рекомендациями ИИ.
-    </div>
+    <div class="card">⚖️ Похудение — контроль дефицита калорий без усилий</div>
+    <div class="card">💪 Набор массы — точный контроль белка и питания</div>
+    <div class="card">🧘 Здоровье — баланс питания и воды с ИИ</div>
   </div>
 </section>
 
@@ -241,39 +301,72 @@
   <div class="how-grid">
 
     <div class="phone-card">
-      <div class="phone-mock"></div>
-      <p>1. Сделайте фото еды или отправьте текст/голос</p>
+      <div class="phone-mock">
+        <div class="mock-ui">
+          <div class="mock-header">HealthyBot</div>
+          <div class="msg bot">🍽 Анализирую блюдо...</div>
+          <div class="msg user">Фото еды</div>
+          <div class="msg bot">≈ 620 ккал • БЖУ рассчитаны</div>
+        </div>
+      </div>
+      <p>1. Фото еды или голосовое сообщение</p>
     </div>
 
     <div class="phone-card">
-      <div class="phone-mock"></div>
-      <p>2. ИИ определяет состав и подтверждает анализ</p>
+      <div class="phone-mock">
+        <div class="mock-ui">
+          <div class="mock-header">HealthyBot</div>
+          <div class="msg bot">Проверь состав: курица, рис, овощи?</div>
+          <div class="msg user">Да</div>
+        </div>
+      </div>
+      <p>2. ИИ определяет состав и подтверждение</p>
     </div>
 
     <div class="phone-card">
-      <div class="phone-mock"></div>
-      <p>3. Отслеживайте потребление воды в течение дня</p>
+      <div class="phone-mock">
+        <div class="mock-ui">
+          <div class="mock-header">HealthyBot</div>
+          <div class="msg bot">Вода: 1200 / 2000 мл</div>
+        </div>
+      </div>
+      <p>3. Учёт воды в течение дня</p>
     </div>
 
     <div class="phone-card">
-      <div class="phone-mock"></div>
-      <p>4. ИИ помогает выполнять дневные цели</p>
+      <div class="phone-mock">
+        <div class="mock-ui">
+          <div class="mock-header">HealthyBot</div>
+          <div class="msg bot">Ты близко к цели 👍</div>
+        </div>
+      </div>
+      <p>4. ИИ помогает достигать целей</p>
     </div>
 
     <div class="phone-card">
-      <div class="phone-mock"></div>
-      <p>5. Получайте регулярные отчёты о прогрессе</p>
+      <div class="phone-mock">
+        <div class="mock-ui">
+          <div class="mock-header">HealthyBot</div>
+          <div class="msg bot">Неделя: -0.8 кг</div>
+        </div>
+      </div>
+      <p>5. Отчёты и прогресс</p>
     </div>
 
     <div class="phone-card">
-      <div class="phone-mock"></div>
-      <p>6. Персональные советы ИИ-нутрициолога</p>
+      <div class="phone-mock">
+        <div class="mock-ui">
+          <div class="mock-header">HealthyBot</div>
+          <div class="msg bot">Совет: добавь белок в ужин</div>
+        </div>
+      </div>
+      <p>6. Советы ИИ-нутрициолога</p>
     </div>
 
   </div>
 </section>
 
-<!-- FINAL CTA -->
+<!-- CTA -->
 <section class="final">
   <h2>Начните контролировать питание уже сегодня</h2>
   <p style="color:#aaa;margin-top:10px;">

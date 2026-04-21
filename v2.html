@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HealthyBot — AI Nutrition Tracker</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Inter, sans-serif;
+    }
+
+    body {
+      background: #0b0f1a;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 18px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(11,15,26,0.75);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: 0.3px;
+    }
+
+    nav a {
+      margin: 0 14px;
+      text-decoration: none;
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, #00d2ff, #6c5ce7);
+      padding: 10px 16px;
+      border-radius: 10px;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 170px 20px 80px;
+      text-align: center;
+      background: radial-gradient(circle at top, #1b1f3a, #0b0f1a);
+    }
+
+    .hero h1 {
+      font-size: 58px;
+      font-weight: 800;
+      line-height: 1.05;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .hero p {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #bbb;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .badge {
+      margin-top: 14px;
+      color: #888;
+      font-size: 13px;
+    }
+
+    /* CTA */
+    .cta-btn {
+      margin-top: 28px;
+    }
+
+    /* SECTION */
+    .section {
+      padding: 90px 60px;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 34px;
+      margin-bottom: 40px;
+    }
+
+    /* GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: #141a2e;
+      padding: 20px;
+      border-radius: 14px;
+      color: #ddd;
+    }
+
+    /* SPLIT */
+    .split {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .box {
+      flex: 1;
+    }
+
+    .mock {
+      flex: 1;
+      height: 320px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #00d2ff, #6c5ce7);
+    }
+
+    /* STEPS */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .step {
+      background: #12182b;
+      padding: 20px;
+      border-radius: 14px;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .quote {
+      background: #141a2e;
+      padding: 20px;
+      border-radius: 14px;
+      color: #ccc;
+    }
+
+    /* PRICING */
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .price {
+      background: #141a2e;
+      padding: 24px;
+      border-radius: 14px;
+    }
+
+    .price h3 {
+      margin-bottom: 10px;
+    }
+
+    .price ul {
+      margin-top: 10px;
+      color: #aaa;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* CTA FINAL */
+    .final {
+      text-align: center;
+      padding: 100px 20px;
+      background: #0f1426;
+    }
+
+    .final h2 {
+      font-size: 36px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 12px;
+      color: #666;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .grid, .steps, .testimonials, .pricing {
+        grid-template-columns: 1fr;
+      }
+
+      .split {
+        flex-direction: column;
+      }
+
+      header {
+        padding: 18px 20px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">HealthyBot</div>
+  <nav>
+    <a href="#features">Фичи</a>
+    <a href="#how">Как работает</a>
+    <a href="#pricing">Цены</a>
+  </nav>
+  <button class="btn">Попробовать</button>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>AI считает калории по фото прямо в Telegram</h1>
+  <p>
+    HealthyBot автоматически анализирует еду, считает калории и БЖУ,
+    и даёт персональные советы от ИИ-нутрициолога.
+  </p>
+  <div class="badge">📱 Без приложений • Без регистрации • Только Telegram</div>
+  <div class="cta-btn">
+    <button class="btn">Попробовать бесплатно</button>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="section">
+  <h2>Питание больше не нужно считать вручную</h2>
+  <div class="grid">
+    <div class="card">❌ надо записывать еду каждый день</div>
+    <div class="card">❌ сложно считать калории и БЖУ</div>
+    <div class="card">❌ диеты быстро надоедают</div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="section split">
+  <div class="box">
+    <h2>Просто сделайте фото еды</h2>
+    <p style="color:#aaa;">
+      ИИ определит блюдо, порцию и рассчитает все макроэлементы за секунды.
+      Вы сразу получаете рекомендации под вашу цель.
+    </p>
+  </div>
+  <div class="mock"></div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <h2>Возможности HealthyBot</h2>
+
+  <div class="grid">
+    <div class="card">📸 AI распознавание еды по фото</div>
+    <div class="card">🤖 ИИ-нутрициолог с рекомендациями</div>
+    <div class="card">⚖️ Контроль калорий и БЖУ</div>
+    <div class="card">💧 Трекер воды</div>
+    <div class="card">🎯 Цели и прогресс</div>
+    <div class="card">📊 Аналитика питания</div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how">
+  <h2>Как это работает</h2>
+
+  <div class="steps">
+    <div class="step">
+      <h3>1. Фото еды</h3>
+      <p>или текст / голос</p>
+    </div>
+    <div class="step">
+      <h3>2. Анализ ИИ</h3>
+      <p>калории + БЖУ + порции</p>
+    </div>
+    <div class="step">
+      <h3>3. Рекомендации</h3>
+      <p>персональный план питания</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+  <h2>Отзывы пользователей</h2>
+
+  <div class="testimonials">
+    <div class="quote">“Просто фоткаю еду — и всё считается автоматически.”</div>
+    <div class="quote">“Лучший способ следить за питанием без приложений.”</div>
+    <div class="quote">“ИИ реально помогает менять рацион.”</div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <h2>Тарифы</h2>
+
+  <div class="pricing">
+    <div class="price">
+      <h3>Free</h3>
+      <ul>
+        <li>Базовый анализ еды</li>
+        <li>Ограниченный ИИ</li>
+      </ul>
+    </div>
+
+    <div class="price">
+      <h3>Pro</h3>
+      <ul>
+        <li>Полный анализ БЖУ</li>
+        <li>ИИ-нутрициолог</li>
+        <li>Отчёты и прогресс</li>
+      </ul>
+    </div>
+
+    <div class="price">
+      <h3>Premium</h3>
+      <ul>
+        <li>Персональные рекомендации</li>
+        <li>Глубокая аналитика</li>
+        <li>AI коучинг</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <h2>Начните контролировать питание уже сегодня</h2>
+  <p style="color:#aaa;margin-top:10px;">
+    HealthyBot заменяет трекер калорий, диетолога и дневник питания
+  </p>
+
+  <button class="btn" style="margin-top:20px;">Перейти в Telegram</button>
+</section>
+
+<footer>
+  © 2026 HealthyBot — AI Nutrition Tracker in Telegram
+</footer>
+
+</body>
+</html>

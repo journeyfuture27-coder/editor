@@ -1,153 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AI Landing Builder</title>
+  <title>HealthyBot — AI Nutrition Tracker</title>
 
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Inter, sans-serif;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; font-family:Inter,sans-serif; }
 
     body {
-      background: #0b0f1a;
-      color: white;
-      overflow-x: hidden;
+      background:#0b0f1a;
+      color:white;
+      overflow-x:hidden;
     }
 
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 60px;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      background: rgba(11,15,26,0.8);
-      backdrop-filter: blur(10px);
-      z-index: 100;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 60px;
+      position:fixed;
+      top:0;
+      width:100%;
+      background:rgba(11,15,26,0.85);
+      backdrop-filter:blur(10px);
+      z-index:100;
     }
 
-    .logo {
-      font-weight: 700;
-      font-size: 18px;
+    .logo { font-weight:800; }
+
+    .btn {
+      background:linear-gradient(135deg,#00d2ff,#6c5ce7);
+      padding:10px 16px;
+      border-radius:10px;
+      border:none;
+      color:white;
+      cursor:pointer;
     }
 
     nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: #aaa;
-      font-size: 14px;
+      margin-left:18px;
+      text-decoration:none;
+      color:#aaa;
+      font-size:14px;
     }
 
-    .btn {
-      background: linear-gradient(135deg,#6c5ce7,#00d2ff);
-      padding: 10px 18px;
-      border-radius: 10px;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-
-    /* HERO */
     .hero {
-      padding: 160px 60px 80px;
-      text-align: center;
-      background: radial-gradient(circle at top, #1b1f3a, #0b0f1a);
+      padding:160px 60px 80px;
+      text-align:center;
+      background:radial-gradient(circle at top,#1b1f3a,#0b0f1a);
     }
 
     .hero h1 {
-      font-size: 56px;
-      font-weight: 800;
-      line-height: 1.1;
+      font-size:54px;
+      font-weight:800;
+      line-height:1.1;
     }
 
     .hero p {
-      margin-top: 20px;
-      color: #bbb;
-      font-size: 18px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
+      margin-top:20px;
+      color:#bbb;
+      font-size:18px;
+      max-width:800px;
+      margin-left:auto;
+      margin-right:auto;
     }
 
-    .hero .cta {
-      margin-top: 30px;
+    .tag {
+      margin-top:12px;
+      color:#888;
+      font-size:13px;
     }
 
-    /* FEATURES */
     .section {
-      padding: 80px 60px;
+      padding:80px 60px;
     }
 
     .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
     }
 
     .card {
-      background: #151a2e;
-      padding: 20px;
-      border-radius: 14px;
+      background:#151a2e;
+      padding:20px;
+      border-radius:14px;
+      color:#ddd;
     }
 
-    /* AI SECTION */
     .ai {
-      display: flex;
-      gap: 40px;
-      align-items: center;
+      display:flex;
+      gap:40px;
+      align-items:center;
     }
 
-    .ai-box {
-      flex: 1;
-    }
-
-    .ai-box h2 {
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
-
+    .ai-box { flex:1; }
     .ai-visual {
-      flex: 1;
-      height: 300px;
-      background: linear-gradient(135deg,#6c5ce7,#00d2ff);
-      border-radius: 20px;
+      flex:1;
+      height:320px;
+      background:linear-gradient(135deg,#00d2ff,#6c5ce7);
+      border-radius:20px;
     }
 
-    /* CTA */
-    .cta-section {
-      text-align: center;
-      padding: 100px 60px;
-      background: #0f1426;
+    .steps {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
     }
 
-    .cta-section h2 {
-      font-size: 40px;
+    .step {
+      background:#12182b;
+      padding:20px;
+      border-radius:12px;
+    }
+
+    .cta {
+      text-align:center;
+      padding:100px 60px;
+      background:#0f1426;
     }
 
     footer {
-      padding: 40px;
-      text-align: center;
-      color: #777;
-      font-size: 13px;
+      padding:40px;
+      text-align:center;
+      color:#777;
+      font-size:13px;
     }
 
-    @media (max-width: 900px) {
-      .grid { grid-template-columns: 1fr; }
-      header { padding: 20px; }
-      .hero h1 { font-size: 36px; }
-      .ai { flex-direction: column; }
+    @media(max-width:900px){
+      .grid,.steps { grid-template-columns:1fr; }
+      .ai { flex-direction:column; }
+      header { padding:20px; }
+      .hero h1 { font-size:36px; }
     }
   </style>
 </head>
@@ -155,49 +143,108 @@
 <body>
 
 <header>
-  <div class="logo">Grapes AI</div>
+  <div class="logo">HealthyBot</div>
   <nav>
-    <a href="#">Features</a>
-    <a href="#">How it works</a>
-    <a href="#">Pricing</a>
+    <a href="#audience">Кому полезен</a>
+    <a href="#features">Выгоды</a>
+    <a href="#how">Как работает</a>
   </nav>
-  <button class="btn">Get Started</button>
+  <button class="btn">Попробовать</button>
 </header>
 
 <section class="hero">
-  <h1>Build Landing Pages with AI in Seconds</h1>
-  <p>Generate, clone, and customize high-converting landing pages instantly using AI-powered visual editing.</p>
-  <div class="cta">
-    <button class="btn">Try it Free</button>
+  <h1>ИИ-нутрициолог в Telegram, который считает калории по фото</h1>
+  <p>
+    Сфотографируйте блюдо — получите калории, БЖУ и персональные рекомендации.
+    Подходит для похудения, набора массы и контроля питания.
+  </p>
+  <div class="tag">📱 Работает прямо в Telegram • Без регистрации</div>
+  <button class="btn" style="margin-top:25px;">Попробовать бесплатно</button>
+</section>
+
+<section class="section" id="audience">
+  <h2 style="text-align:center;margin-bottom:40px;">Кому полезен HealthyBot</h2>
+
+  <div class="grid">
+    <div class="card">
+      <b>⚖️ Похудение</b><br><br>
+      Автоматический подсчёт калорий и контроль дефицита. ИИ помогает держать стабильный прогресс без срывов.
+    </div>
+
+    <div class="card">
+      <b>💪 Набор мышечной массы</b><br><br>
+      Контроль белка и калорийности для чистого набора массы без лишнего жира.
+    </div>
+
+    <div class="card">
+      <b>🧠 Здоровый образ жизни</b><br><br>
+      Баланс питания, воды и активности с постоянными рекомендациями ИИ.
+    </div>
   </div>
 </section>
 
-<section class="section">
-  <h2 style="text-align:center;margin-bottom:40px;">Why creators love it</h2>
+<section class="section" id="features">
+  <h2 style="text-align:center;margin-bottom:40px;">Почему выбирают HealthyBot</h2>
+
   <div class="grid">
-    <div class="card">⚡ AI generates full layouts instantly</div>
-    <div class="card">🎨 Drag & drop visual editor</div>
-    <div class="card">🚀 Export clean HTML/CSS</div>
+    <div class="card">📸 Быстрый логинг еды по фото</div>
+    <div class="card">💧 Контроль потребления воды</div>
+    <div class="card">🎯 Отслеживание целей (вес, БЖУ, вода)</div>
+    <div class="card">🏃 Трекер активности и тренировок</div>
+    <div class="card">📊 Дневная и недельная аналитика</div>
+    <div class="card">🤖 ИИ-нутрициолог с персональными советами</div>
   </div>
 </section>
 
 <section class="section ai">
   <div class="ai-box">
-    <h2>AI understands your idea</h2>
-    <p>Just describe your landing page and AI builds it automatically using proven conversion patterns.</p>
+    <h2>ИИ понимает еду как человек</h2>
+    <p>
+      Распознаёт блюда по фото с учётом порций, оценивает калории и макроэлементы,
+      и предлагает корректировки под ваши цели.
+    </p>
   </div>
   <div class="ai-visual"></div>
 </section>
 
-<section class="cta-section">
-  <h2>Start building your landing page now</h2>
-  <p style="color:#aaa;margin-top:10px;">No coding required. No setup.</p>
-  <button class="btn" style="margin-top:20px;">Launch Editor</button>
+<section class="section" id="how">
+  <h2 style="text-align:center;margin-bottom:40px;">Как это работает</h2>
+
+  <div class="steps">
+    <div class="step">
+      <h3>1. Отправьте фото</h3>
+      <p>Или голосовое / текст — как удобно.</p>
+    </div>
+
+    <div class="step">
+      <h3>2. ИИ анализирует</h3>
+      <p>Определяет блюдо, порцию и считает калории.</p>
+    </div>
+
+    <div class="step">
+      <h3>3. Получаете результат</h3>
+      <p>Калории, БЖУ и советы нутрициолога.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Начните вести питание в Telegram уже сегодня</h2>
+  <p style="color:#aaa;margin-top:10px;">
+    Без приложений, без регистрации — просто чат.
+  </p>
+  <button class="btn" style="margin-top:20px;">Перейти в Telegram</button>
+
+  <div style="margin-top:40px; color:#666; font-size:12px;">
+    Политика • Оферта
+  </div>
 </section>
 
 <footer>
-  © 2026 AI Landing Builder. All rights reserved.
+  © 2026 HealthyBot — AI Nutrition Assistant in Telegram
 </footer>
 
+</body>
+</html>
 </body>
 </html>

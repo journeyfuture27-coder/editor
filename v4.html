@@ -87,12 +87,6 @@
       margin: auto;
     }
 
-    .badge {
-      margin-top: 14px;
-      color: #888;
-      font-size: 13px;
-    }
-
     .section { padding: 90px 60px; }
 
     h2 {
@@ -135,7 +129,6 @@
       background: #12182b;
       padding: 16px;
       border-radius: 18px;
-      text-align: center;
       transition: 0.25s ease;
     }
 
@@ -187,16 +180,13 @@
       padding: 8px 10px;
       border-radius: 12px;
       max-width: 95%;
+      animation: fadeIn 0.5s ease forwards;
       opacity: 0;
-      transform: translateY(8px);
-      animation: msgIn 0.5s forwards;
+      transform: translateY(6px);
     }
 
-    @keyframes msgIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .user {
@@ -211,42 +201,25 @@
       color: #ccc;
     }
 
-    /* typing animation */
-    .typing {
+    .voice {
       display: flex;
-      gap: 4px;
-      padding: 8px 10px;
-      background: #1a2138;
-      border-radius: 12px;
-      width: fit-content;
+      align-items: center;
+      gap: 6px;
+      background: #2a3350;
     }
 
-    .dot {
-      width: 5px;
-      height: 5px;
-      background: #aaa;
-      border-radius: 50%;
-      animation: blink 1.2s infinite;
-    }
-
-    .dot:nth-child(2) { animation-delay: 0.2s; }
-    .dot:nth-child(3) { animation-delay: 0.4s; }
-
-    @keyframes blink {
-      0%, 100% { opacity: 0.2; }
-      50% { opacity: 1; }
-    }
-
-    /* image fade */
-    .fade-img {
+    .dotbar {
       width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg,#00d2ff,#6c5ce7);
       border-radius: 10px;
-      animation: fadeIn 1.2s ease;
+      animation: pulse 1s infinite;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(1.02); }
-      to { opacity: 1; transform: scale(1); }
+    @keyframes pulse {
+      0% { opacity: 0.4; }
+      50% { opacity: 1; }
+      100% { opacity: 0.4; }
     }
 
     .final {
@@ -271,6 +244,7 @@
       .section { padding: 60px 16px; }
       .btn { width: 100%; }
     }
+
   </style>
 </head>
 
@@ -282,26 +256,15 @@
     <a href="#audience">Кому полезен</a>
     <a href="#how">Как работает</a>
   </nav>
-  <a class="btn" href="https://t.me/Fit_Healthybot">Начать анализ еды →</a>
+  <a class="btn" href="https://t.me/Fit_Healthybot">Начать →</a>
 </header>
 
 <section class="hero">
   <h1>AI считает калории по фото прямо в Telegram</h1>
   <p>HealthyBot анализирует еду, считает калории и БЖУ и даёт рекомендации от ИИ-нутрициолога.</p>
-  <div class="badge">📱 Без приложений • Telegram • Анализ за секунды</div>
-
   <a class="btn" style="margin-top:25px;" href="https://t.me/Fit_Healthybot">
-    Попробовать бесплатно в Telegram →
+    Попробовать бесплатно →
   </a>
-</section>
-
-<section class="section">
-  <h2>Знакомые проблемы?</h2>
-  <div class="grid">
-    <div class="card">😩 Устали вручную заносить еду?</div>
-    <div class="card">🎯 Хотите советы по похудению?</div>
-    <div class="card">📱 Не хотите приложение?</div>
-  </div>
 </section>
 
 <section class="section" id="how">
@@ -309,73 +272,62 @@
 
   <div class="how-grid">
 
-    <!-- STEP 1 (ANIMATED) -->
+    <!-- STEP 1 -->
     <div class="phone-card">
       <div class="phone-mock">
         <div class="mock-ui">
 
           <div class="mock-header">Telegram • HealthyBot</div>
 
-          <div class="msg user" style="animation-delay:0.2s">
-            📸 Фото: салат Цезарь
-          </div>
+          <div class="msg user">📸 Фото: салат Цезарь</div>
 
-          <div class="typing" style="animation-delay:0.6s">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-          </div>
+          <div class="msg bot">🤖 Анализирую изображение...</div>
 
-          <div class="msg bot" style="animation-delay:1.2s">
-            🤖 Анализирую изображение...
-          </div>
-
-          <img class="fade-img"
-               src="https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&w=600&q=80">
-
-          <div class="msg bot" style="animation-delay:1.6s">
-            🥗 Салат Цезарь — 320 г
-          </div>
+          <div class="msg bot">🥗 Салат Цезарь с курицей</div>
 
         </div>
       </div>
-      <p>1. Отправка фото</p>
+      <p>1. Загрузка фото и распознавание блюда</p>
     </div>
 
-    <!-- STEP 2 (ANIMATED FLOW) -->
+    <!-- STEP 2 -->
     <div class="phone-card">
       <div class="phone-mock">
         <div class="mock-ui">
 
           <div class="mock-header">Telegram • HealthyBot</div>
 
-          <div class="msg bot" style="animation-delay:0.2s">
-            🥗 Салат Цезарь:
+          <div class="msg bot">🥗 Салат Цезарь:</div>
+          <div class="msg bot">🍗 Куриное филе — 120 г</div>
+          <div class="msg bot">🥬 Салат — 80 г</div>
+          <div class="msg bot">🧀 Пармезан — 15 г</div>
+          <div class="msg bot">🥖 Гренки — 60 г</div>
+
+          <div class="msg bot">🔥 Вес: 320 г</div>
+          <div class="msg bot">🔥 Б: 38 • Ж: 22 • У: 35 • К: 540</div>
+
+          <div class="msg user">🎤 (голосовое сообщение)</div>
+
+          <div class="msg voice bot">
+            🎧 Слушаю и корректирую...
+            <div class="dotbar"></div>
           </div>
 
-          <div class="msg bot" style="animation-delay:0.4s">
-            🍗 Куриное филе — 120 г
-          </div>
+          <div class="msg bot">✔ Понял, заменяю курицу на индейку</div>
 
-          <div class="msg bot" style="animation-delay:0.6s">
-            🥬 Салат — 80 г
-          </div>
+          <div class="msg bot">🔄 Пересчитываю...</div>
 
-          <div class="msg bot" style="animation-delay:0.8s">
-            🧀 Пармезан — 15 г
-          </div>
+          <div class="msg bot">🥗 Обновлённый состав:</div>
+          <div class="msg bot">🦃 Индейка — 120 г</div>
+          <div class="msg bot">🥬 Салат — 80 г</div>
+          <div class="msg bot">🧀 Пармезан — 15 г</div>
+          <div class="msg bot">🥖 Гренки — 60 г</div>
 
-          <div class="msg bot" style="animation-delay:1s">
-            🥖 Гренки — 60 г
-          </div>
-
-          <div class="msg bot" style="animation-delay:1.3s">
-            🔥 Б: 38г • Ж: 22г • У: 35г
-          </div>
+          <div class="msg bot">🔥 Б: 42 • Ж: 20 • У: 35 • К: 535</div>
 
         </div>
       </div>
-      <p>2. Детальный разбор</p>
+      <p>2. Разбор, уточнение и пересчёт БЖУК</p>
     </div>
 
     <!-- STEP 3 -->
@@ -383,12 +335,11 @@
       <div class="phone-mock">
         <div class="mock-ui">
           <div class="mock-header">Telegram • HealthyBot</div>
-
           <div class="msg bot">💧 Вода: 1200 / 2000 мл</div>
           <div class="msg bot">🎯 Прогресс дня</div>
         </div>
       </div>
-      <p>3. Контроль</p>
+      <p>3. Контроль прогресса</p>
     </div>
 
   </div>

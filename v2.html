@@ -21,7 +21,6 @@
       overflow-x: hidden;
     }
 
-    /* NAV */
     header {
       position: fixed;
       top: 0;
@@ -37,7 +36,6 @@
 
     .logo {
       font-weight: 800;
-      letter-spacing: 0.3px;
     }
 
     nav a {
@@ -65,7 +63,7 @@
     }
 
     .hero h1 {
-      font-size: 58px;
+      font-size: 56px;
       font-weight: 800;
       line-height: 1.05;
       max-width: 900px;
@@ -87,12 +85,10 @@
       font-size: 13px;
     }
 
-    /* CTA */
     .cta-btn {
       margin-top: 28px;
     }
 
-    /* SECTION */
     .section {
       padding: 90px 60px;
     }
@@ -135,17 +131,33 @@
       background: linear-gradient(135deg, #00d2ff, #6c5ce7);
     }
 
-    /* STEPS */
-    .steps {
+    /* HOW IT WORKS */
+    .how-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
+      margin-top: 40px;
     }
 
-    .step {
+    .phone-card {
       background: #12182b;
-      padding: 20px;
-      border-radius: 14px;
+      padding: 16px;
+      border-radius: 18px;
+      text-align: center;
+    }
+
+    .phone-mock {
+      width: 100%;
+      height: 260px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #00d2ff, #6c5ce7);
+      margin-bottom: 14px;
+    }
+
+    .phone-card p {
+      font-size: 14px;
+      color: #ccc;
+      line-height: 1.4;
     }
 
     /* TESTIMONIALS */
@@ -175,10 +187,6 @@
       border-radius: 14px;
     }
 
-    .price h3 {
-      margin-bottom: 10px;
-    }
-
     .price ul {
       margin-top: 10px;
       color: #aaa;
@@ -186,15 +194,11 @@
       line-height: 1.6;
     }
 
-    /* CTA FINAL */
+    /* CTA */
     .final {
       text-align: center;
       padding: 100px 20px;
       background: #0f1426;
-    }
-
-    .final h2 {
-      font-size: 36px;
     }
 
     footer {
@@ -204,9 +208,8 @@
       color: #666;
     }
 
-    /* RESPONSIVE */
     @media (max-width: 900px) {
-      .grid, .steps, .testimonials, .pricing {
+      .grid, .how-grid, .testimonials, .pricing {
         grid-template-columns: 1fr;
       }
 
@@ -222,6 +225,7 @@
         font-size: 36px;
       }
     }
+
   </style>
 </head>
 
@@ -242,34 +246,12 @@
   <h1>AI считает калории по фото прямо в Telegram</h1>
   <p>
     HealthyBot автоматически анализирует еду, считает калории и БЖУ,
-    и даёт персональные советы от ИИ-нутрициолога.
+    и даёт персональные рекомендации от ИИ-нутрициолога.
   </p>
-  <div class="badge">📱 Без приложений • Без регистрации • Только Telegram</div>
+  <div class="badge">📱 Без приложений • Только Telegram • Анализ за секунды</div>
   <div class="cta-btn">
     <button class="btn">Попробовать бесплатно</button>
   </div>
-</section>
-
-<!-- PROBLEM -->
-<section class="section">
-  <h2>Питание больше не нужно считать вручную</h2>
-  <div class="grid">
-    <div class="card">❌ надо записывать еду каждый день</div>
-    <div class="card">❌ сложно считать калории и БЖУ</div>
-    <div class="card">❌ диеты быстро надоедают</div>
-  </div>
-</section>
-
-<!-- SOLUTION -->
-<section class="section split">
-  <div class="box">
-    <h2>Просто сделайте фото еды</h2>
-    <p style="color:#aaa;">
-      ИИ определит блюдо, порцию и рассчитает все макроэлементы за секунды.
-      Вы сразу получаете рекомендации под вашу цель.
-    </p>
-  </div>
-  <div class="mock"></div>
 </section>
 
 <!-- FEATURES -->
@@ -277,8 +259,8 @@
   <h2>Возможности HealthyBot</h2>
 
   <div class="grid">
-    <div class="card">📸 AI распознавание еды по фото</div>
-    <div class="card">🤖 ИИ-нутрициолог с рекомендациями</div>
+    <div class="card">📸 AI распознаёт еду по фото</div>
+    <div class="card">🤖 ИИ-нутрициолог с советами</div>
     <div class="card">⚖️ Контроль калорий и БЖУ</div>
     <div class="card">💧 Трекер воды</div>
     <div class="card">🎯 Цели и прогресс</div>
@@ -290,25 +272,44 @@
 <section class="section" id="how">
   <h2>Как это работает</h2>
 
-  <div class="steps">
-    <div class="step">
-      <h3>1. Фото еды</h3>
-      <p>или текст / голос</p>
+  <div class="how-grid">
+
+    <div class="phone-card">
+      <div class="phone-mock"></div>
+      <p>1. Сделайте фото еды или напишите / продиктуйте, если уже съели</p>
     </div>
-    <div class="step">
-      <h3>2. Анализ ИИ</h3>
-      <p>калории + БЖУ + порции</p>
+
+    <div class="phone-card">
+      <div class="phone-mock"></div>
+      <p>2. ИИ определяет состав и предлагает подтвердить результат</p>
     </div>
-    <div class="step">
-      <h3>3. Рекомендации</h3>
-      <p>персональный план питания</p>
+
+    <div class="phone-card">
+      <div class="phone-mock"></div>
+      <p>3. Отмечайте выпитую воду в течение дня</p>
     </div>
+
+    <div class="phone-card">
+      <div class="phone-mock"></div>
+      <p>4. ИИ помогает выполнять дневные цели</p>
+    </div>
+
+    <div class="phone-card">
+      <div class="phone-mock"></div>
+      <p>5. Следите за прогрессом через отчёты</p>
+    </div>
+
+    <div class="phone-card">
+      <div class="phone-mock"></div>
+      <p>6. Получайте советы ИИ-нутрициолога</p>
+    </div>
+
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
 <section class="section">
-  <h2>Отзывы пользователей</h2>
+  <h2>Отзывы</h2>
 
   <div class="testimonials">
     <div class="quote">“Просто фоткаю еду — и всё считается автоматически.”</div>
@@ -335,7 +336,7 @@
       <ul>
         <li>Полный анализ БЖУ</li>
         <li>ИИ-нутрициолог</li>
-        <li>Отчёты и прогресс</li>
+        <li>Отчёты</li>
       </ul>
     </div>
 
@@ -350,18 +351,18 @@
   </div>
 </section>
 
-<!-- FINAL CTA -->
+<!-- CTA -->
 <section class="final">
   <h2>Начните контролировать питание уже сегодня</h2>
   <p style="color:#aaa;margin-top:10px;">
-    HealthyBot заменяет трекер калорий, диетолога и дневник питания
+    HealthyBot заменяет трекер калорий, дневник питания и диетолога
   </p>
 
   <button class="btn" style="margin-top:20px;">Перейти в Telegram</button>
 </section>
 
 <footer>
-  © 2026 HealthyBot — AI Nutrition Tracker in Telegram
+  © 2026 HealthyBot
 </footer>
 
 </body>

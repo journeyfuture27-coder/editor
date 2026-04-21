@@ -1,90 +1,130 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>AI Food Scanner</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Food Scanner</title>
 
-  <style>
-    body {
-      margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;
-      color:#111;
-    }
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
+  color:#111;
+  background:#fff;
+}
 
-    section {
-      padding:80px 20px;
-      max-width:1000px;
-      margin:auto;
-    }
+/* CONTAINER */
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:80px 20px;
+}
 
-    h1 {
-      font-size:42px;
-      margin-bottom:20px;
-    }
+/* HERO */
+.hero{
+  background:linear-gradient(135deg,#0f172a,#1e293b);
+  color:#fff;
+  text-align:center;
+  padding:100px 20px;
+}
 
-    h2 {
-      font-size:28px;
-      margin-bottom:20px;
-    }
+.hero h1{
+  font-size:48px;
+  margin-bottom:20px;
+}
 
-    p {
-      color:#555;
-    }
+.hero p{
+  color:#cbd5e1;
+  font-size:18px;
+}
 
-    .hero {
-      text-align:center;
-      background:linear-gradient(135deg,#f5f7fa,#e4ecf7);
-    }
+.btn{
+  display:inline-block;
+  margin-top:25px;
+  padding:14px 28px;
+  border-radius:10px;
+  background:#22c55e;
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+}
 
-    .btn {
-      margin-top:20px;
-      padding:14px 28px;
-      font-size:16px;
-      background:#000;
-      color:#fff;
-      border:none;
-      border-radius:8px;
-      cursor:pointer;
-    }
+/* MOCK PHONE */
+.phone{
+  margin:60px auto 0;
+  width:260px;
+  border-radius:30px;
+  padding:20px;
+  background:#000;
+}
 
-    .grid {
-      display:flex;
-      gap:30px;
-      flex-wrap:wrap;
-    }
+.screen{
+  background:#fff;
+  border-radius:20px;
+  padding:15px;
+  text-align:left;
+}
 
-    .card {
-      flex:1;
-      min-width:250px;
-      padding:20px;
-      border-radius:12px;
-      background:#f7f7f7;
-    }
+.screen img{
+  width:100%;
+  border-radius:12px;
+}
 
-    .steps {
-      counter-reset: step;
-    }
+.result{
+  margin-top:10px;
+  font-size:14px;
+}
 
-    .steps li {
-      margin-bottom:10px;
-    }
+/* GRID */
+.grid{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+}
 
-    .cta {
-      text-align:center;
-      background:#111;
-      color:#fff;
-      border-radius:20px;
-    }
+.card{
+  flex:1;
+  min-width:250px;
+  padding:25px;
+  border-radius:16px;
+  background:#f8fafc;
+  transition:.2s;
+}
 
-    .cta p {
-      color:#ccc;
-    }
+.card:hover{
+  transform:translateY(-5px);
+}
 
-    @media(max-width:600px){
-      h1{font-size:30px;}
-    }
-  </style>
+/* SECTION */
+h2{
+  font-size:30px;
+  margin-bottom:30px;
+}
+
+/* STEPS */
+.steps div{
+  margin-bottom:15px;
+}
+
+/* CTA */
+.cta{
+  background:#111827;
+  color:#fff;
+  text-align:center;
+  border-radius:20px;
+  padding:80px 20px;
+}
+
+.cta p{
+  color:#9ca3af;
+}
+
+/* MOBILE */
+@media(max-width:700px){
+  .hero h1{font-size:32px}
+}
+</style>
 </head>
 
 <body>
@@ -93,12 +133,23 @@
 <section class="hero">
   <h1>Сфотографируй еду — узнай калории за 3 секунды</h1>
   <p>AI анализирует состав блюда и показывает БЖУ и вредные вещества</p>
-  <button class="btn">Попробовать</button>
+  <a href="#" class="btn">Попробовать</a>
+
+  <!-- MOCKUP -->
+  <div class="phone">
+    <div class="screen">
+      <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c" />
+      <div class="result">
+        🍗 Курица с овощами<br>
+        420 kcal • Б: 35г • Ж: 12г • У: 40г
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- PROBLEM -->
-<section>
-  <h2>Почему это проблема</h2>
+<section class="container">
+  <h2>Почему считать калории сложно</h2>
   <div class="grid">
     <div class="card">Вводить еду вручную долго</div>
     <div class="card">Состав блюд непонятен</div>
@@ -107,7 +158,7 @@
 </section>
 
 <!-- SOLUTION -->
-<section>
+<section class="container">
   <h2>Просто сделай фото</h2>
   <div class="grid">
     <div class="card">📸 Сфотографируй еду</div>
@@ -117,23 +168,23 @@
 </section>
 
 <!-- FEATURES -->
-<section>
+<section class="container">
   <h2>Что ты получаешь</h2>
   <div class="grid">
-    <div class="card">Калории</div>
-    <div class="card">Белки, жиры, углеводы</div>
-    <div class="card">Вредные вещества</div>
+    <div class="card">Калории и макросы</div>
+    <div class="card">Анализ состава</div>
+    <div class="card">Поиск вредных веществ</div>
   </div>
 </section>
 
 <!-- CTA -->
-<section class="cta">
-  <h2>Начни следить за питанием сегодня</h2>
-  <p>Без таблиц. Без ручного ввода. Только фото.</p>
-  <button class="btn">Попробовать бесплатно</button>
+<section class="container">
+  <div class="cta">
+    <h2>Начни следить за питанием сегодня</h2>
+    <p>Без таблиц. Без ручного ввода. Только фото.</p>
+    <a href="#" class="btn">Попробовать бесплатно</a>
+  </div>
 </section>
 
-</body>
-</html>
 </body>
 </html>

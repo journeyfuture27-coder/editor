@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Mini Builder</title>
+
+  <link href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" rel="stylesheet"/>
+
+  <style>
+    body { margin: 0; }
+  </style>
+</head>
+<body>
+
+<div id="gjs"></div>
+
+<script src="https://unpkg.com/grapesjs"></script>
+<script src="https://unpkg.com/grapesjs-preset-webpage"></script>
+
+<script>
+  const editor = grapesjs.init({
+    container: '#gjs',
+    height: '100vh',
+
+    fromElement: false,
+
+    storageManager: {
+      type: 'local',
+      autosave: true,
+      autoload: true,
+    },
+
+    plugins: ['gjs-preset-webpage'],
+
+    pluginsOpts: {
+      'gjs-preset-webpage': {}
+    }
+  });
+
+  // Кнопка экспорта
+  editor.Panels.addButton('options', {
+    id: 'export-html',
+    className: 'fa fa-download',
+    command: 'export-html',
+    attributes: { title: 'Export HTML' }
+  });
+
+  editor.Commands.add('export-html', {
+    run(editor) {
+      const html = editor.getHtml();
+      const css = editor.getCss();
+
+      const fullPage = `
+        <html>
+          <head>
+            <style>${css}</style>
+          </head>
+          <body>
+            ${html}
+          </body>
+        </html>
+      `;
+
+      const blob = new Blob([fullPage], { type: 'text/html' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'landing.html';
+      a.click();
+    }
+  });
+</script>
+
+</body>
+</html>

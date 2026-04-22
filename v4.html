@@ -234,29 +234,82 @@
     </div>
 
     <!-- STEP 3 -->
-    <div class="phone-card">
-      <div class="phone-mock">
-        <div class="mock-ui">
+<div class="phone-card">
+  <div class="phone-mock">
+    <div class="mock-ui">
 
-          <div class="msg user">📊 Отчёт за день</div>
+      <div class="mock-header">Telegram • HealthyBot</div>
 
-          <div class="msg bot">📈 Формирую отчёт...</div>
+      <!-- пользователь -->
+      <div class="msg user">📊 Отчёт за день</div>
 
-          <div class="chart">
-            Белки
-            <div class="bar"><div class="fact" style="width:70%"></div></div>
+      <!-- бот -->
+      <div class="msg bot">📈 Формирую отчёт...</div>
+
+      <!-- график -->
+      <div class="chart">
+
+        <div class="chart-row">
+          <span>Белки</span>
+          <div class="bar">
+            <div class="plan" style="width:80%"></div>
+            <div class="fact" style="width:65%"></div>
           </div>
-
-          <div class="msg bot">🥦 Клетчатка: 20 / 50 г</div>
-          <div class="progress"><div class="progress-fill" style="width:40%"></div></div>
-
-          <div class="msg bot">💧 Вода: 1.5 / 2.0 л</div>
-          <div class="progress"><div class="progress-fill" style="width:75%"></div></div>
-
         </div>
+
+        <div class="chart-row">
+          <span>Жиры</span>
+          <div class="bar">
+            <div class="plan" style="width:60%"></div>
+            <div class="fact" style="width:70%"></div>
+          </div>
+        </div>
+
+        <div class="chart-row">
+          <span>Углеводы</span>
+          <div class="bar">
+            <div class="plan" style="width:75%"></div>
+            <div class="fact" style="width:68%"></div>
+          </div>
+        </div>
+
+        <div class="chart-row">
+          <span>Калории</span>
+          <div class="bar">
+            <div class="plan" style="width:85%"></div>
+            <div class="fact" style="width:78%"></div>
+          </div>
+        </div>
+
       </div>
-      <p>Отчёт и прогресс</p>
+
+      <!-- метрики -->
+      <div class="msg bot">🥦 Клетчатка: 20 / 50 г</div>
+      <div class="progress">
+        <div class="progress-fill" style="width:40%"></div>
+      </div>
+
+      <div class="msg bot">💧 Вода: 1.5 / 2.0 л</div>
+      <div class="progress">
+        <div class="progress-fill" style="width:75%"></div>
+      </div>
+
+      <div class="msg bot">🎯 Ты близок к целям дня</div>
+
+      <!-- 🔥 НОВЫЙ ДИАЛОГ -->
+      <div class="msg bot">🤖 Нужны рекомендации на сегодня?</div>
+
+      <div class="msg user">Да</div>
+
+      <div class="msg bot">💡 Добавь ~30 г белка (например, яйца или творог)</div>
+      <div class="msg bot">🥦 Увеличь клетчатку: овощи или цельные злаки</div>
+      <div class="msg bot">💧 Добери ещё ~0.5 л воды</div>
+      <div class="msg bot">🔥 Ты почти в дефиците — держи курс</div>
+
     </div>
+  </div>
+  <p>3. Отчёт, анализ и рекомендации</p>
+</div>    </div>
 
   </div>
 </section>

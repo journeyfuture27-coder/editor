@@ -244,7 +244,52 @@
       .section { padding: 60px 16px; }
       .btn { width: 100%; }
     }
+.chart {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 6px 0;
+}
 
+.chart-row {
+  display: flex;
+  flex-direction: column;
+  font-size: 10px;
+  color: #aaa;
+}
+
+.bar {
+  position: relative;
+  height: 6px;
+  background: #1a2138;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.plan {
+  position: absolute;
+  height: 100%;
+  background: rgba(255,255,255,0.2);
+}
+
+.fact {
+  position: absolute;
+  height: 100%;
+  background: linear-gradient(90deg,#00d2ff,#6c5ce7);
+}
+
+.progress {
+  height: 6px;
+  background: #1a2138;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg,#00d2ff,#6c5ce7);
+}
   </style>
 </head>
 
@@ -335,17 +380,72 @@
     </div>
 
     <!-- STEP 3 -->
-    <div class="phone-card">
-      <div class="phone-mock">
-        <div class="mock-ui">
-          <div class="mock-header">Telegram • HealthyBot</div>
-          <div class="msg bot">💧 Вода: 1200 / 2000 мл</div>
-          <div class="msg bot">🎯 Прогресс дня</div>
-        </div>
-      </div>
-      <p>3. Контроль прогресса</p>
-    </div>
+<div class="phone-card">
+  <div class="phone-mock">
+    <div class="mock-ui">
 
+      <div class="mock-header">Telegram • HealthyBot</div>
+
+      <!-- пользователь -->
+      <div class="msg user">📊 Отчёт за день</div>
+
+      <!-- бот -->
+      <div class="msg bot">📈 Формирую отчёт...</div>
+
+      <!-- "график" -->
+      <div class="chart">
+
+        <div class="chart-row">
+          <span>Белки</span>
+          <div class="bar">
+            <div class="plan" style="width:80%"></div>
+            <div class="fact" style="width:65%"></div>
+          </div>
+        </div>
+
+        <div class="chart-row">
+          <span>Жиры</span>
+          <div class="bar">
+            <div class="plan" style="width:60%"></div>
+            <div class="fact" style="width:70%"></div>
+          </div>
+        </div>
+
+        <div class="chart-row">
+          <span>Углеводы</span>
+          <div class="bar">
+            <div class="plan" style="width:75%"></div>
+            <div class="fact" style="width:68%"></div>
+          </div>
+        </div>
+
+        <div class="chart-row">
+          <span>Калории</span>
+          <div class="bar">
+            <div class="plan" style="width:85%"></div>
+            <div class="fact" style="width:78%"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- метрики -->
+      <div class="msg bot">🥦 Клетчатка: 20 / 50 г</div>
+      <div class="progress">
+        <div class="progress-fill" style="width:40%"></div>
+      </div>
+
+      <div class="msg bot">💧 Вода: 1.5 / 2.0 л</div>
+      <div class="progress">
+        <div class="progress-fill" style="width:75%"></div>
+      </div>
+
+      <div class="msg bot">🎯 Ты близок к целям дня</div>
+
+    </div>
+  </div>
+  <p>3. Дневной отчёт и прогресс</p>
+</div>
   </div>
 </section>
 

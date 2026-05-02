@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HealthyBot — AI Nutrition Tracker</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Inter, sans-serif;
+    }
+
+    body {
+      background: #0b0f1a;
+      color: white;
+    }
+
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      padding: 16px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(11,15,26,0.75);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, #00d2ff, #6c5ce7);
+      padding: 10px 16px;
+      border-radius: 10px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    .hero {
+      padding: 150px 20px 80px;
+      text-align: center;
+      background: radial-gradient(circle at top, #1b1f3a, #0b0f1a);
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .hero p {
+      margin-top: 15px;
+      color: #bbb;
+    }
+
+    .section {
+      padding: 80px 40px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: #141a2e;
+      padding: 20px;
+      border-radius: 14px;
+    }
+
+    .card p {
+      margin-top: 10px;
+      color: #bbb;
+      line-height: 1.5;
+    }
+
+    /* HOW */
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .phone-card {
+      background: #12182b;
+      padding: 16px;
+      border-radius: 18px;
+    }
+
+    .phone-mock {
+      aspect-ratio: 9 / 19;
+      background: #0e1324;
+      border-radius: 26px;
+      padding: 10px;
+      overflow: hidden;
+    }
+
+    .mock-ui {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 11px;
+    }
+
+    .msg {
+      padding: 7px 9px;
+      border-radius: 12px;
+      max-width: 90%;
+    }
+
+    .user {
+      align-self: flex-end;
+      background: linear-gradient(135deg, #00d2ff, #6c5ce7);
+    }
+
+    .bot {
+      background: #1a2138;
+      color: #ccc;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    /* CHART */
+    .chart {
+      margin: 6px 0;
+    }
+
+    .bar {
+      height: 6px;
+      background: #1a2138;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .fact {
+      height: 100%;
+      background: linear-gradient(90deg,#00d2ff,#6c5ce7);
+    }
+
+    .progress {
+      height: 6px;
+      background: #1a2138;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 5px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg,#00d2ff,#6c5ce7);
+    }
+
+    /* ADV */
+    .adv-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    /* PRICING */
+    .pricing {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .price-card {
+      background: #141a2e;
+      padding: 26px 20px;
+      border-radius: 16px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 420px;
+      position: relative;
+    }
+
+    .price-content {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .price-title {
+      color: #aaa;
+      font-size: 18px;
+    }
+
+    .price {
+      font-size: 34px;
+      font-weight: 800;
+    }
+
+    .price span {
+      font-size: 14px;
+      color: #888;
+    }
+
+    .price-sub {
+      color: #6c5ce7;
+      font-size: 13px;
+    }
+
+    .price-features {
+      list-style: none;
+      margin: 15px 0;
+      color: #bbb;
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    .price-btn {
+      align-self: center;
+      min-width: 220px;
+      text-align: center;
+    }
+
+    .highlight {
+      border: 1px solid rgba(108,92,231,0.6);
+      transform: scale(1.04);
+    }
+
+    .badge-best {
+      position: absolute;
+      top: -10px;
+      right: 10px;
+      background: #6c5ce7;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+
+    /* FINAL */
+    .final {
+      text-align: center;
+      padding: 100px 20px;
+      background: #0f1426;
+    }
+
+    @media (max-width: 900px) {
+      .grid,
+      .how-grid,
+      .pricing {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        padding: 14px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div>HealthyBot</div>
+    <a class="btn" href="https://t.me/Fit_Healthybot">Начать бесплатно</a>
+  </header>
+
+  <section class="hero">
+    <h1>AI считает калории по фото прямо в Telegram</h1>
+    <p>HealthyBot анализирует еду, считает калории и БЖУ и даёт рекомендации от ИИ-нутрициолога</p>
+  </section>
+
+  <!-- БОЛИ -->
+  <section class="section">
+    <h2>Знакомые проблемы?</h2>
+    <div class="grid">
+      <div class="card">😩 Устали каждый день заносить еду в дневник?</div>
+      <div class="card">🎯 Хотите профессиональные советы по похудению?</div>
+      <div class="card">📱 Не хотите устанавливать приложение?</div>
+    </div>
+  </section>
+
+  <!-- КОМУ -->
+  <section class="section">
+    <h2>Кому полезен HealthyBot</h2>
+
+    <div class="grid">
+      <div class="card">
+        <b>⚖️ Похудение</b>
+        <p>Автоматически считайте калории с ИИ и отслеживайте дефицит. ИИ-нутрициолог поможет с рационом для стабильного прогресса.</p>
+      </div>
+
+      <div class="card">
+        <b>💪 Набор мышечной массы</b>
+        <p>Контролируйте белок и калорийность, чтобы набирать мышцы без лишнего жира. ИИ подскажет, как разнообразить питание.</p>
+      </div>
+
+      <div class="card">
+        <b>🧘 Поддержание здоровья</b>
+        <p>Следите за качеством питания, балансом БЖУ и уровнем воды каждый день.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW -->
+  <section class="section">
+    <h2>Как это работает</h2>
+
+    <div class="how-grid">
+
+      <!-- 1 -->
+      <div class="phone-card">
+        <div class="phone-mock">
+          <div class="mock-ui">
+            <div class="msg user">📸 Фото салата</div>
+            <div class="msg bot">Анализирую изображение...</div>
+            <img src="https://images.unsplash.com/photo-1550304943-4f24f54ddde9">
+            <div class="msg bot">Салат Цезарь с курицей</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="phone-card">
+        <div class="phone-mock">
+          <div class="mock-ui">
+            <div class="msg bot">Салат Цезарь:</div>
+            <div class="msg bot">Курица — 120 г</div>
+            <div class="msg bot">Салат — 80 г</div>
+            <div class="msg bot">БЖУ рассчитаны</div>
+            <div class="msg user">🎤 голос</div>
+            <div class="msg bot">Понял, заменяю на индейку</div>
+            <div class="msg bot">Пересчитал данные</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="phone-card">
+        <div class="phone-mock">
+          <div class="mock-ui">
+
+            <div class="msg user">Отчёт за день</div>
+            <div class="msg bot">Формирую отчёт...</div>
+
+            <div class="chart">
+              Белки
+              <div class="bar">
+                <div class="fact" style="width:70%"></div>
+              </div>
+            </div>
+
+            <div class="msg bot">Клетчатка: 20 / 50 г</div>
+            <div class="progress"><div class="progress-fill" style="width:40%"></div></div>
+
+            <div class="msg bot">Вода: 1.5 / 2.0 л</div>
+            <div class="progress"><div class="progress-fill" style="width:75%"></div></div>
+
+            <div class="msg bot">Нужны рекомендации?</div>
+            <div class="msg user">Да</div>
+
+            <div class="msg bot">Добавь 30 г белка</div>
+            <div class="msg bot">Увеличь клетчатку</div>
+            <div class="msg bot">Добери воду</div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ПРЕИМУЩЕСТВА -->
+  <section class="section">
+    <h2>Почему выбирают HealthyBot</h2>
+
+    <div class="grid">
+      <div class="card"><div class="adv-title">📸 Анализ фото</div><p>Распознаёт блюда и считает БЖУ автоматически</p></div>
+      <div class="card"><div class="adv-title">🎤 Голос</div><p>Позволяет быстро вносить изменения</p></div>
+      <div class="card"><div class="adv-title">🧠 ИИ-нутрициолог</div><p>Даёт рекомендации по рациону</p></div>
+      <div class="card"><div class="adv-title">📊 Контроль БЖУ</div><p>Отслеживает питание без ручного ввода</p></div>
+      <div class="card"><div class="adv-title">💧 Вода и нутриенты</div><p>Контролирует важные показатели</p></div>
+      <div class="card"><div class="adv-title">⚡ Без приложения</div><p>Работает прямо в Telegram</p></div>
+    </div>
+  </section>
+
+  <!-- ТАРИФЫ -->
+  <section class="section">
+    <h2>Тарифы</h2>
+
+    <div class="pricing">
+
+      <div class="price-card">
+        <div class="price-content">
+          <div class="price-title">Месяц</div>
+          <div class="price">360₽ <span>/ месяц</span></div>
+
+          <ul class="price-features">
+            <li>✔ Анализ фото и еды</li>
+            <li>✔ Расчёт БЖУ и калорий</li>
+            <li>✔ Рекомендации ИИ</li>
+            <li>✔ Трекер воды и прогресса</li>
+          </ul>
+        </div>
+
+        <a href="https://t.me/Fit_Healthybot" class="btn price-btn">
+          Начать за 360₽
+        </a>
+      </div>
+
+      <div class="price-card highlight">
+        <div class="badge-best">🔥 Выгодно</div>
+
+        <div class="price-content">
+          <div class="price-title">Год</div>
+          <div class="price">3600₽ <span>/ год</span></div>
+          <div class="price-sub">≈ 300₽ в месяц</div>
+
+          <ul class="price-features">
+            <li>✔ Всё из месячного тарифа</li>
+            <li>✔ Экономия 720₽</li>
+            <li>✔ Приоритетный доступ к новым функциям</li>
+          </ul>
+        </div>
+
+        <a href="https://t.me/Fit_Healthybot" class="btn price-btn">
+          Выбрать выгодный тариф →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="final">
+    <h2>Начните контролировать питание уже сегодня</h2>
+    <a class="btn" href="https://t.me/Fit_Healthybot">
+      Перейти в Telegram
+    </a>
+  </section>
+
+</body>
+</html>

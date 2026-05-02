@@ -136,6 +136,69 @@
       .grid,.how-grid { grid-template-columns:1fr; }
       header { padding:14px; }
     }
+    .pricing {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.price-card {
+  position: relative;
+  text-align: center;
+  padding: 26px 20px;
+}
+
+.price-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #aaa;
+}
+
+.price {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.price span {
+  font-size: 14px;
+  color: #888;
+  font-weight: 400;
+}
+
+.price-sub {
+  font-size: 13px;
+  color: #6c5ce7;
+  margin-bottom: 10px;
+}
+
+.price-features {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0 20px;
+  font-size: 14px;
+  color: #bbb;
+  line-height: 1.6;
+}
+
+.price-btn {
+  width: 100%;
+}
+
+.highlight {
+  border: 1px solid rgba(108,92,231,0.6);
+  background: linear-gradient(180deg, #151b33, #12182b);
+  transform: scale(1.03);
+}
+
+.badge-best {
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  background: #6c5ce7;
+  padding: 4px 8px;
+  font-size: 11px;
+  border-radius: 6px;
+}
   </style>
 </head>
 
@@ -365,7 +428,59 @@
 
   </div>
 </section>
+<section class="section">
+  <h2>Выберите тариф</h2>
 
+  <div class="grid pricing">
+
+    <!-- МЕСЯЦ -->
+    <div class="card price-card">
+      <div class="price-title">Месяц</div>
+
+      <div class="price">
+        360₽ <span>/ месяц</span>
+      </div>
+
+      <ul class="price-features">
+        <li>✔ Анализ фото и еды</li>
+        <li>✔ Расчёт БЖУ и калорий</li>
+        <li>✔ Рекомендации ИИ</li>
+        <li>✔ Трекер воды и прогресса</li>
+      </ul>
+
+      <a href="https://t.me/Fit_Healthybot" class="btn price-btn">
+        Начать за 360₽
+      </a>
+    </div>
+
+    <!-- ГОД -->
+    <div class="card price-card highlight">
+
+      <div class="badge-best">🔥 Выгодно</div>
+
+      <div class="price-title">Год</div>
+
+      <div class="price">
+        3600₽ <span>/ год</span>
+      </div>
+
+      <div class="price-sub">
+        ≈ 300₽ в месяц
+      </div>
+
+      <ul class="price-features">
+        <li>✔ Всё из месячного тарифа</li>
+        <li>✔ Экономия 720₽</li>
+        <li>✔ Приоритетный доступ к новым функциям</li>
+      </ul>
+
+      <a href="https://t.me/Fit_Healthybot" class="btn price-btn">
+        Выбрать выгодный тариф →
+      </a>
+    </div>
+
+  </div>
+</section>
   
 <section class="final">
   <h2>Начните уже сегодня</h2>
